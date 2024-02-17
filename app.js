@@ -1,13 +1,16 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
-var app = express();
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const process = require("process");
+const { User } = require("./models/user.js");
+
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -19,7 +22,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Роутинг, выставляем порядок наследования,
+const env = process.env.NODE_ENV || 'development';
+
+// Инициализируем модели Sequelize
+const initedSequlizeModels = require('./models/index');
+const models = initedSequlizeModels.sequelize.models;
+
+// Роутинг, выставляем порядок наследования
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
@@ -40,3 +49,15 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+async function test() {
+  // console.log(User);
+  const jane = models.sequelize.models.User.build({ id: 1, name: 'Админ', role: 'admin' });
+  console.log(jane);
+  //
+  await jane.save();
+  // console.log(models.sequelize.models.Author.add);
+  // console.log(models.models);
+  // console.log(models);
+  //const jane = await User.create({ firstName: "Jane", lastName: "Doe" });
+}
