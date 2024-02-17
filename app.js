@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const bodyParser = require('body-parser');
 
 
 const indexRouter = require('./routes/index');
@@ -22,11 +23,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-const env = process.env.NODE_ENV || 'development';
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// Инициализируем модели Sequelize
-const initedSequlizeModels = require('./models/index');
-const models = initedSequlizeModels.sequelize.models;
 
 // Роутинг, выставляем порядок наследования
 app.use('/', indexRouter);
@@ -49,15 +47,3 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
-
-async function test() {
-  // console.log(User);
-  const jane = models.sequelize.models.User.build({ id: 1, name: 'Админ', role: 'admin' });
-  console.log(jane);
-  //
-  await jane.save();
-  // console.log(models.sequelize.models.Author.add);
-  // console.log(models.models);
-  // console.log(models);
-  //const jane = await User.create({ firstName: "Jane", lastName: "Doe" });
-}

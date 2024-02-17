@@ -7,7 +7,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
-    role: DataTypes.STRING,
+    role: {
+      type: DataTypes.STRING,
+      defaultValue: 'common',
+    },
     name: DataTypes.STRING,
   }, {
     sequelize,
