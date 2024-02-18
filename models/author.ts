@@ -1,10 +1,9 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
+import { Model } from "sequelize";
+
+module.exports = (sequelize: any, DataTypes: any) => {
   class Author extends Model {
-    static associate(models) {
+    static associate() {
       const Book = sequelize.define('Book');
 
       Author.hasMany(Book);

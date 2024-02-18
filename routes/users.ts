@@ -2,9 +2,10 @@ import express, { NextFunction, Request, Response } from "express";
 const router = express.Router();
 import { BaseResponses } from '../models/responses/response';
 // Инициализируем модели Sequelize
-const initedSequlizeModels = require('../models/index.js');
+const initedSequlizeModels = require('../models');
 import { TAddUserRequest } from '../types/requests/TUserRequests';
-const models = initedSequlizeModels.sequelize.models as any;
+import { TModelStatic } from "../types/requests/TSequlizeModel";
+const models = initedSequlizeModels.sequelize.models as { User: TModelStatic };
 
 // Получить всех пользователей
 router.get('/', async function (_req: Request, res: Response) {
@@ -29,17 +30,16 @@ router.use('/put/', function(req: Request, res: Response, next: NextFunction): a
   if (!isCorrect({ name: req?.body.name })) return res.json(BaseResponses.getErrorResponse({ message: 'Invalid UserData' }));
   next();
 },);
+
 router.put('/put/', async function (req: Request, res: Response) {
   const userData = { name: req?.body.name };
-  const newUser = await models.User.build({ ...userData });
+  const newUser = models.User.build({...userData});
   const result = await newUser.save();
 
   res.json(BaseResponses.getSuccessResponse({ result }));
 });
 
-// @ts-ignore
-router.use('/change/:userId/', async function (req: Request, res: Response, next: NextFunction) {
-  // @ts-ignore
+router.use('/change/:userId/', async function (req: Request<{ userId: string }>, res: Response, next: NextFunction): Promise<any> {
   const user = await models.User.findByPk(req.params.userId);
   // @ts-ignore
   req.user = user;
@@ -49,7 +49,7 @@ router.use('/change/:userId/', async function (req: Request, res: Response, next
 
 router.post('/change/:userId/', async function (req: Request, res: Response) {
   // @ts-ignore
-  const user = req.user;
+  const user = req.user as User;
 
   user.name = req.body.name ?? user.name;
   const result = await user.save();

@@ -1,11 +1,9 @@
 'use strict';
-const { Model } = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
-    static associate(models) {
-      // define association here
-    }
-  }
+
+import { Model, Sequelize } from "sequelize";
+
+module.exports = (sequelize: Sequelize, DataTypes: any) => {
+  class User extends Model {}
   User.init({
     role: {
       type: DataTypes.STRING,

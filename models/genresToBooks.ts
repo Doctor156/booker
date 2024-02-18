@@ -1,14 +1,15 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
+import { Model } from "sequelize";
+
+module.exports = (sequelize: any, DataTypes: any) => {
   class GenresToBooks extends Model {
-    static associate(models) {
+    static associate() {
       const Genre = sequelize.define('Genre');
       const Book = sequelize.define('Book');
 
+      // @ts-ignore
       GenresToBooks.belongsToMany(Genre);
+      // @ts-ignore
       GenresToBooks.belongsToMany(Book);
     }
   }
