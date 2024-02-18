@@ -1,0 +1,708 @@
+{
+	"info": {
+		"_postman_id": "d17d6bac-0646-44ba-a158-c80c33029a1d",
+		"name": "Booker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16962283"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/{{crudUrl}}/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{crudUrl}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/{{crudUrl}}/get/1/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{crudUrl}}",
+								"get",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "test2",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/{{crudUrl}}/update/2/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{crudUrl}}",
+								"update",
+								"2",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "Test",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "test2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/{{crudUrl}}/add/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{crudUrl}}",
+								"add",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "Test",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.collectionVariables.set(\"crudUrl\", \"users\");"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "genres",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/{{crudUrl}}/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{crudUrl}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/{{crudUrl}}/get/1/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{crudUrl}}",
+								"get",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Что-то с чем-то",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/{{crudUrl}}/update/2/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{crudUrl}}",
+								"update",
+								"2",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "Test",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Мюзикл",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/{{crudUrl}}/add/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{crudUrl}}",
+								"add",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "Test",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.collectionVariables.set(\"crudUrl\", \"genres\");"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "books",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/{{crudUrl}}/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{crudUrl}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/{{crudUrl}}/get/6/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{crudUrl}}",
+								"get",
+								"6",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Меняю профессию2",
+									"type": "text"
+								},
+								{
+									"key": "author_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "Роман",
+									"type": "text"
+								},
+								{
+									"key": "genres",
+									"value": "1,2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/{{crudUrl}}/update/6/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{crudUrl}}",
+								"update",
+								"6",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "Test",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Меняю профессию",
+									"type": "text"
+								},
+								{
+									"key": "author_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "Роман",
+									"type": "text"
+								},
+								{
+									"key": "genres",
+									"value": "1,2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/{{crudUrl}}/add/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{crudUrl}}",
+								"add",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "Test",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.collectionVariables.set(\"crudUrl\", \"books\");",
+							"console.log(pm.globals);"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "authors",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/{{crudUrl}}/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{crudUrl}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "123451",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "authToken",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/{{crudUrl}}/get/1/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{crudUrl}}",
+								"get",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "test2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/{{crudUrl}}/update/2/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{crudUrl}}",
+								"update",
+								"2",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "Test",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Василий Иванович",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/{{crudUrl}}/add/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{crudUrl}}",
+								"add",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "Test",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.collectionVariables.set(\"crudUrl\", \"authors\");",
+							"console.log(pm.globals);"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "get authtoken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"pm.collectionVariables.set(pm.collectionVariables.set(\"authToken\", jsonData.data.authToken));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Админ",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/auth/get-token/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"auth",
+						"get-token",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{authToken}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "authtoken",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "localhost:3001",
+			"type": "string"
+		},
+		{
+			"key": "crudUrl",
+			"value": "users",
+			"type": "string"
+		},
+		{
+			"key": "authToken",
+			"value": "123456",
+			"type": "string"
+		},
+		{
+			"value": ""
+		}
+	]
+}

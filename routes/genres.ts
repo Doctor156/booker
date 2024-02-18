@@ -15,7 +15,7 @@ router.get('/', async function (_req: Request, res: Response) {
 router.get('/get/:genreId/', async function (req: Request, res: Response) {
   const user = await Genre.findByPk(req.params?.genreId);
 
-  if (!user) res.json(BaseResponses.getErrorResponse({ message: 'No such user' }))
+  if (!user) res.json(BaseResponses.getErrorResponse({ message: 'No such genre' }))
 
   res.json(BaseResponses.getSuccessResponse({ user: user }));
 });
@@ -39,7 +39,7 @@ router.use('/update/:genreId/', async function (req: Request<{ genreId: string }
   const genre = await Genre.findByPk(req.params.genreId);
 
   req.body.genre = genre;
-  if (!genre) return res.json(BaseResponses.getErrorResponse({ message: 'No such Genre' }))
+  if (!genre) return res.json(BaseResponses.getErrorResponse({ message: 'No such genre' }))
   next();
 });
 

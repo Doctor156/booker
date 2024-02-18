@@ -24,9 +24,9 @@ router.get('/get/:userId/', async function (req: Request, res: Response) {
 });
 
 // Добавить пользователя
-router.use('/add/', function(req: Request, res: Response, next: NextFunction): any {
+router.use(function(req: Request, res: Response, next: NextFunction): any {
   const isCorrect = function (user: TAddUserRequest|any) { return notEmpty(user.name) && notEmpty(user.password) };
-  if (!isCorrect({ name: req?.body.name })) return res.json(BaseResponses.getErrorResponse({ message: 'Invalid UserData' }));
+  if (!isCorrect({ name: req?.body.name, password: req?.body.password })) return res.json(BaseResponses.getErrorResponse({ message: 'Invalid UserData' }));
   next();
 },);
 
