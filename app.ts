@@ -9,6 +9,9 @@ const bodyParser = require('body-parser');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const genresRouter = require('./routes/genres');
+const booksRouter = require('./routes/books');
+const authorsRouter = require('./routes/authors');
 
 const app = express();
 
@@ -25,9 +28,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-// Роутинг, выставляем порядок наследования
+// Роутинг
 app.use('/', indexRouter);
+
+// Круды
 app.use('/users', usersRouter);
+app.use('/genres', genresRouter);
+app.use('/authors', authorsRouter);
+app.use('/books', booksRouter);
 
 // catch 404 and forward to error handler
 app.use(function(_req: Request, _res: Response, next: NextFunction) {

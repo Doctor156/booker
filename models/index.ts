@@ -20,7 +20,6 @@ const modelDefiners = [
     require('./author.ts'),
     require('./book.ts'),
     require('./genre.ts'),
-    require('./genresToBooks.ts'),
     require('./user.ts'),
     // Add more models here...
 ];
@@ -29,11 +28,12 @@ for (const modelDefiner of modelDefiners) {
     modelDefiner(sequelize, Sequelize.DataTypes);
 }
 
-Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
-});
+const { Author, Book, Genre } = sequelize.models;
+
+Author.hasMany(Book, { foreignKey: 'author_id' });
+Book.belongsTo(Author, { foreignKey: 'author_id' });
+Book.belongsToMany(Genre, { through: 'genres_books', as: 'genres', foreignKey: 'book_id' });
+Genre.belongsToMany(Book, { through: 'genres_books', as: 'books', foreignKey: 'genre_id' });
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

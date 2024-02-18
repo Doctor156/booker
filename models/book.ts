@@ -3,17 +3,8 @@
 import { Model } from "sequelize";
 
 module.exports = (sequelize: any, DataTypes: any) => {
-  class Book extends Model {
-    static associate() {
-      const Author = sequelize.define('Author');
-      const Genre = sequelize.define('Genre');
-      const GenresToBooks = sequelize.define('GenresToBooks');
+  class Book extends Model {}
 
-      Book.belongsTo(Author);
-      // @ts-ignore
-      Book.hasMany(Genre, { through: GenresToBooks });
-    }
-  }
   Book.init({
     type: DataTypes.STRING,
     name: DataTypes.STRING,

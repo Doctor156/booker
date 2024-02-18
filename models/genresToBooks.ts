@@ -19,7 +19,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
   }, {
     sequelize,
     modelName: 'GenresToBooks',
-    tableName: 'genres-to-books',
+    tableName: 'genres_books',
   });
 
   return GenresToBooks;

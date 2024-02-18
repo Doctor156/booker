@@ -2,13 +2,7 @@
 import { Model } from "sequelize";
 
 module.exports = (sequelize: any, DataTypes: any) => {
-  class Author extends Model {
-    static associate() {
-      const Book = sequelize.define('Book');
-
-      Author.hasMany(Book);
-    }
-  }
+  class Author extends Model {}
 
   Author.init({
     name: DataTypes.STRING,
