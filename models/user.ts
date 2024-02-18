@@ -10,6 +10,11 @@ module.exports = (sequelize: Sequelize, DataTypes: any) => {
       defaultValue: 'common',
     },
     name: DataTypes.STRING,
+    password: DataTypes.STRING,
+    authToken: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   }, {
     sequelize,
     modelName: 'User',

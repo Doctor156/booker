@@ -1,5 +1,6 @@
 export type TAddUserRequest = {
-    name: string
+    name: string,
+    password: string,
 }
 
 export type TAddGenreRequest = {

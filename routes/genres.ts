@@ -1,22 +1,19 @@
 import express, { NextFunction, Request, Response } from "express";
 import { BaseResponses } from '../helpers/responses/response';
 import { TAddGenreRequest } from '../types/requests/TAddRequests';
-import { TModelStatic } from "../types/requests/TSequlizeModel";
 import { notEmpty } from "../helpers/validators/notEmpty";
 
 // Инициализируем модели Sequelize
-const initedSequlizeModels = require('../models');
 const router = express.Router();
-const models = initedSequlizeModels.sequelize.models as { Genre: TModelStatic };
-
+const { Genre } = require('../models');
 // Получить все жанры
 router.get('/', async function (_req: Request, res: Response) {
-  res.json(BaseResponses.getSuccessResponse({ books: await models.Genre.findAll() }));
+  res.json(BaseResponses.getSuccessResponse({ books: await Genre.findAll() }));
 });
 
 // Получить жанр по ID
 router.get('/get/:genreId/', async function (req: Request, res: Response) {
-  const user = await models.Genre.findByPk(req.params?.genreId);
+  const user = await Genre.findByPk(req.params?.genreId);
 
   if (!user) res.json(BaseResponses.getErrorResponse({ message: 'No such user' }))
 
@@ -32,23 +29,22 @@ router.use('/add/', function(req: Request, res: Response, next: NextFunction): a
 
 router.put('/add/', async function (req: Request, res: Response) {
   const genreData = { name: req?.body.name };
-  const newGenre = models.Genre.build({...genreData});
+  const newGenre = Genre.build({...genreData});
   const result = await newGenre.save();
 
   res.json(BaseResponses.getSuccessResponse({ result }));
 });
 
 router.use('/update/:genreId/', async function (req: Request<{ genreId: string }>, res: Response, next: NextFunction): Promise<any> {
-  const genre = await models.Genre.findByPk(req.params.genreId);
-  // @ts-ignore
-  req.genre = genre;
+  const genre = await Genre.findByPk(req.params.genreId);
+
+  req.body.genre = genre;
   if (!genre) return res.json(BaseResponses.getErrorResponse({ message: 'No such Genre' }))
   next();
 });
 
 router.post('/update/:genreId/', async function (req: Request, res: Response) {
-  // @ts-ignore
-  const genre = req.genre as Genre;
+  const genre = req.body.genre;
 
   genre.name = req.body.name ?? genre.name;
   const result = await genre.save();

@@ -4,9 +4,8 @@ import { TAddAuthorRequest } from '../types/requests/TAddRequests';
 import { notEmpty } from "../helpers/validators/notEmpty";
 
 // Инициализируем модели Sequelize
-const initedSequlizeModels = require('../models');
 const router = express.Router();
-const { Author, Book } = initedSequlizeModels.sequelize.models;
+const { Author, Book } = require('../models');
 
 // Получить всех авторов
 router.get('/', async function (_req: Request, res: Response) {

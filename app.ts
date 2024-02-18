@@ -7,12 +7,6 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const genresRouter = require('./routes/genres');
-const booksRouter = require('./routes/books');
-const authorsRouter = require('./routes/authors');
-
 const app = express();
 
 // view engine setup
@@ -24,9 +18,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
+const authRouter = require('./routes/auth');
+
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const genresRouter = require('./routes/genres');
+const booksRouter = require('./routes/books');
+const authorsRouter = require('./routes/authors');
+
+
+app.use(authRouter);
 
 // Роутинг
 app.use('/', indexRouter);

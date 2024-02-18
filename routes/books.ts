@@ -7,9 +7,7 @@ import { isInEnum } from "../helpers/validators/isInEnum";
 import { Op } from "sequelize";
 import { TGenre } from "../types/TGenre";
 
-// Инициализируем модели Sequelize
-const initedSequlizeModels = require('../models');
-const { Book, Author, Genre } = initedSequlizeModels.sequelize.models;
+const { Book, Author, Genre } = require('../models');
 
 const router = express.Router();
 
