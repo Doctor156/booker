@@ -1,11 +1,11 @@
+import { NextFunction, Request, Response } from "express";
+import express from 'express';
+import path from 'path';
+
 const createError = require('http-errors');
-const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
-const express = require('express');
-import { NextFunction, Request, Response } from "express";
-
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');

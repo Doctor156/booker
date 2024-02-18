@@ -1,24 +1,15 @@
 {
   "development": {
-    "username": "docdoc",
-    "password": "123456",
-    "database": "booker",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "port": "5432"
   },
   "test": {
-    "username": "docdoc",
-    "password": "123456",
-    "database": "booker",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "port": "5432"
   },
   "production": {
-    "username": "docdoc",
-    "password": "123456",
-    "database": "booker",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "port": "5432"

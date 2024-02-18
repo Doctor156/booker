@@ -4,10 +4,15 @@ const Sequelize = require('sequelize');
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db: any = {};
+const enviroment = require("dotenv").config();
+
 
 
 const sequelize = new Sequelize({
     ...config,
+    'username': enviroment.parsed.POSTGRES_USER,
+    'password': enviroment.parsed.POSTGRES_PASSWORD,
+    'database': enviroment.parsed.POSTGRES_DB,
     logging: (...msg: any) => console.log(msg)
 });
 

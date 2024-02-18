@@ -1,10 +1,11 @@
 import express, { NextFunction, Request, Response } from "express";
-const router = express.Router();
 import { BaseResponses } from '../models/responses/response';
-// Инициализируем модели Sequelize
-const initedSequlizeModels = require('../models');
 import { TAddUserRequest } from '../types/requests/TUserRequests';
 import { TModelStatic } from "../types/requests/TSequlizeModel";
+
+// Инициализируем модели Sequelize
+const initedSequlizeModels = require('../models');
+const router = express.Router();
 const models = initedSequlizeModels.sequelize.models as { User: TModelStatic };
 
 // Получить всех пользователей
