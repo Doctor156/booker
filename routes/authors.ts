@@ -2,10 +2,10 @@ import express, { NextFunction, Request, Response } from "express";
 import { BaseResponses } from '../helpers/responses/response';
 import { TAddAuthorRequest } from '../types/requests/TAddRequests';
 import { notEmpty } from "../helpers/validators/notEmpty";
+import { Author, Book } from '../models'
 
 // Инициализируем модели Sequelize
 const router = express.Router();
-const { Author, Book } = require('../models');
 
 // Получить всех авторов
 router.get('/', async function (_req: Request, res: Response) {
@@ -53,4 +53,4 @@ router.post('/update/:authorId/', async function (req: Request, res: Response) {
   res.json(BaseResponses.getSuccessResponse({ ...result }));
 });
 
-module.exports = router;
+export = router;

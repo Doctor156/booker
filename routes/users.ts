@@ -3,11 +3,12 @@ import { BaseResponses } from '../helpers/responses/response';
 import { TAddUserRequest } from '../types/requests/TAddRequests';
 import { notEmpty } from "../helpers/validators/notEmpty";
 import crypto from "crypto";
+import { User } from '../models';
 
 // Инициализируем модели Sequelize
 const router = express.Router();
 
-const { User } = require('../models');
+
 
 // Получить всех пользователей
 router.get('/', async function (_req: Request, res: Response) {
@@ -60,4 +61,4 @@ router.post('/update/:userId/', async function (req: Request, res: Response) {
   res.json(BaseResponses.getSuccessResponse({ ...result }));
 });
 
-module.exports = router;
+export = router;

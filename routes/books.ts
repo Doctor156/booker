@@ -6,8 +6,7 @@ import { notEmpty } from "../helpers/validators/notEmpty";
 import { isInEnum } from "../helpers/validators/isInEnum";
 import { Op } from "sequelize";
 import { TGenre } from "../types/TGenre";
-
-const { Book, Author, Genre } = require('../models');
+import { Book, Author, Genre } from '../models'
 
 const router = express.Router();
 
@@ -56,7 +55,7 @@ router.use('/', async function(req: Request, res: Response, next: NextFunction):
 router.put('/add/', async function (req: Request, res: Response) {
   let bookData = { name: req?.body.name, type: req?.body.type, author_id: req?.body.author_id } as TAddBookRequest;
 
-  const newBook = await Book.create({ ...bookData });
+  const newBook = await Book.create({ ...bookData }) as any;
   if (!!req?.body.genres) newBook.setGenres(req?.body.genres.map((genre: TGenre) => genre.id));
 
   res.json(BaseResponses.getSuccessResponse(newBook));
@@ -82,4 +81,4 @@ router.post('/update/:bookId/', async function (req: Request, res: Response) {
   res.json(BaseResponses.getSuccessResponse({ ...result }));
 });
 
-module.exports = router;
+export = router;

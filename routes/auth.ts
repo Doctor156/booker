@@ -1,9 +1,9 @@
 import express, { NextFunction, Request, Response } from "express";
 import { BaseResponses } from "../helpers/responses/response";
 import * as crypto from 'crypto';
+import { User }  from '../models'
 
 const router = express.Router();
-const { User } = require('../models');
 
 
 // Если у нас есть аус токен то ищем по нему пользователя, вполне уверен что есть библиотека, которая это делает, но это тестовое, потому делаю сам
@@ -27,7 +27,7 @@ router.post('/auth/get-token/',async function (req: Request, res: Response): Pro
         const pass = md5(req.body.password).toString();
 
         const getUserByNamePass = async () => await User.findOne({ where: { name: req.body.name, password: pass}});
-        const user = await getUserByNamePass();
+        const user = await getUserByNamePass() as any;
 
         if (!user) return res.json(BaseResponses.getErrorResponse({ message: 'Invalid data', res: pass }));
 
@@ -38,4 +38,4 @@ router.post('/auth/get-token/',async function (req: Request, res: Response): Pro
     }
 },);
 
-module.exports = router;
+export = router;

@@ -2,10 +2,12 @@ import express, { NextFunction, Request, Response } from "express";
 import { BaseResponses } from '../helpers/responses/response';
 import { TAddGenreRequest } from '../types/requests/TAddRequests';
 import { notEmpty } from "../helpers/validators/notEmpty";
+import { Genre } from '../models';
+
 
 // Инициализируем модели Sequelize
 const router = express.Router();
-const { Genre } = require('../models');
+
 // Получить все жанры
 router.get('/', async function (_req: Request, res: Response) {
   res.json(BaseResponses.getSuccessResponse({ books: await Genre.findAll() }));
@@ -52,4 +54,4 @@ router.post('/update/:genreId/', async function (req: Request, res: Response) {
   res.json(BaseResponses.getSuccessResponse({ ...result }));
 });
 
-module.exports = router;
+export = router;
